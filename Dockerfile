@@ -13,4 +13,4 @@ RUN uv pip install --system .
 
 EXPOSE 8000
 
-CMD python -c "import os; from grok_search.server import mcp; mcp.run(transport='streamable-http', host='0.0.0.0', port=int(os.environ.get('PORT', '8000')), path='/mcp/', show_banner=False)"
+CMD uvicorn grok_search.render_app:app --host 0.0.0.0 --port ${PORT:-8000}
